@@ -86,7 +86,7 @@ MonoBehaviour:
   thrustSpeed: 1160
   thrustDrag: 1.5
   rotateSpeed: 124.5
-  rotateDrag: 3.5999999
+  rotateDrag: 3.45000005
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
