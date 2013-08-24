@@ -8,10 +8,16 @@ public class SteerPlayer : MonoBehaviour
 	public float rotateSpeed;
 	public float rotateDrag;
 	
+	private ManagePlayerState mps;
+	
 	// Use this for initialization
 	void Start () 
 	{
-		
+		mps = gameObject.GetComponent<ManagePlayerState>();
+		if(!mps)
+		{
+			print("SteerPlayer: Couldn't get player state!");
+		}
 	}
 	
 	// Update is called once per frame
