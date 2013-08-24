@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d020d9478ba38ef44813364d3fb13b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 4.59000015
+  countdown: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d576300dfc49fdc44a459b450b0549e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0
+  bulletSpeed: 35
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
