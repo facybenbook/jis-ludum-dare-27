@@ -25,16 +25,17 @@ public class ShootBullet : MonoBehaviour
 			if(mps.offenseMode)
 			{
 				GameObject newBullet = Instantiate(bulletPrefab, 
-									   transform.position + transform.forward * 1.6f, 
-									   transform.rotation) as GameObject;
+									               transform.position + transform.forward * 1.6f, 
+									               transform.rotation) as GameObject;
 				newBullet.transform.forward = transform.forward;
 				
 			}
 			else
 			{
-				Instantiate(shieldPrefab, 
-							transform.position + transform.forward * 1.1f, 
-							transform.rotation);
+				GameObject newShield = Instantiate(shieldPrefab, 
+							                       transform.position, 
+							                       transform.rotation) as GameObject;
+				newShield.GetComponent<KeepShieldInFront>().playerTransform = transform;
 			}
 			
 		}

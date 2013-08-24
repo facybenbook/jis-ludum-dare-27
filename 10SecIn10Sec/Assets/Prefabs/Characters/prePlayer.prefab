@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spiritPrefab: {fileID: 100000, guid: ec574cb010cd78c438a21b4aecd591af, type: 2}
-  offenseMode: 1
+  offenseMode: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
