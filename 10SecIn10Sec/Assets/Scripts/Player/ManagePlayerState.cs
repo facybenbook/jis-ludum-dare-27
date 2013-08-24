@@ -10,7 +10,8 @@ public class ManagePlayerState : MonoBehaviour
 	public GameObject spiritPrefab;
 	public bool offenseMode = true;
 	
-	private int health = 0;
+	private int health = 100;
+	private int approvalPoints = 0;
 	private List<GameObject> listOfSpirits;
 	
 	// Use this for initialization
@@ -40,5 +41,10 @@ public class ManagePlayerState : MonoBehaviour
 	public int GetHealth()
 	{
 		return health;
+	}
+	
+	public int GetApprovalPoints()
+	{
+		return approvalPoints;
 	}
 }

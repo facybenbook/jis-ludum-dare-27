@@ -4,6 +4,7 @@ using System.Collections;
 public class ShootBullet : MonoBehaviour 
 {
 	public GameObject bulletPrefab;
+	public GameObject shieldPrefab;
 	private ManagePlayerState mps;
 	
 	// Use this for initialization
@@ -23,13 +24,17 @@ public class ShootBullet : MonoBehaviour
 		{
 			if(mps.offenseMode)
 			{
-				Instantiate(bulletPrefab, 
-							transform.position + transform.forward * 1.1f, 
-							transform.rotation);
+				GameObject newBullet = Instantiate(bulletPrefab, 
+									   transform.position + transform.forward * 1.6f, 
+									   transform.rotation) as GameObject;
+				newBullet.transform.forward = transform.forward;
+				
 			}
 			else
 			{
-				print("SHIELD!");
+				Instantiate(shieldPrefab, 
+							transform.position + transform.forward * 1.1f, 
+							transform.rotation);
 			}
 			
 		}

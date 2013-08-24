@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: af8e88784117bf248a0feb82f0bf4c79
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - spiritPrefab: {fileID: 100000, guid: ec574cb010cd78c438a21b4aecd591af, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -418,7 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81050294c47fe934a91c73aa0c77e6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 100000, guid: 2652ed174a639f447a5049dee85e7ff8, type: 2}
+  bulletPrefab: {fileID: 100000, guid: 7a0b5d9ba62ecd14799583aebd1db6ec, type: 2}
+  shieldPrefab: {fileID: 100000, guid: fd26c6ba1e3c90040966d32a7b2c5e2d, type: 2}
 --- !u!135 &1308643781
 SphereCollider:
   m_ObjectHideFlags: 0
