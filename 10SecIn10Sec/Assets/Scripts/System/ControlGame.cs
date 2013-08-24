@@ -8,9 +8,14 @@ using System.Collections.Generic;
 public class ControlGame : MonoBehaviour 
 {
 	[HideInInspector] public List<GameObject> listOfPlayers;
-	private static GameObject m_instance;
+	
 	public static float currTime = 10.0f;
+	public const int MAX_HEALTH = 100;
+	
+	private static GameObject m_instance;
 	private static double realTime = 0.0;
+	
+	
 	
 	// Use this for initialization
 	void Start () 

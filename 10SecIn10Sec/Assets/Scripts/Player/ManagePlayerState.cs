@@ -10,9 +10,10 @@ public class ManagePlayerState : MonoBehaviour
 	public GameObject spiritPrefab;
 	public bool offenseMode = true;
 	
-	private int health = 100;
-	private int approvalPoints = 0;
 	private List<GameObject> listOfSpirits;
+	private int health = ControlGame.MAX_HEALTH;
+	private int approvalPoints = 0;
+	private int ammo = 0;
 	
 	// Use this for initialization
 	void Start () 
@@ -35,8 +36,19 @@ public class ManagePlayerState : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		// Cheat for switching mode.
+		/*
+		if(Input.GetKeyUp(KeyCode.O))
+		{
+			offenseMode = !offenseMode;
+		}
+		//*/
+		
+		
 	}
+	
+	
+	// ----- Accessors ----- //
 	
 	public int GetHealth()
 	{
@@ -46,5 +58,24 @@ public class ManagePlayerState : MonoBehaviour
 	public int GetApprovalPoints()
 	{
 		return approvalPoints;
+	}
+	
+	public int GetAmmo()
+	{
+		return ammo;
+	}
+	
+	public void AmmoInc()
+	{
+		ammo++;
+	}
+	
+	public void AmmoDec()
+	{
+		ammo--;
+		if(ammo < 0)
+		{
+			ammo = 0;
+		}
 	}
 }

@@ -22,6 +22,9 @@ public class ManageSpiritState : MonoBehaviour
 		transform.position = playerTransform.position + angleDisplacement * 2.0f;
 	}
 	
+	
+	// ------ Accessors --------- //
+	
 	public int GetSpiritIndex()
 	{
 		return spiritIndex;
