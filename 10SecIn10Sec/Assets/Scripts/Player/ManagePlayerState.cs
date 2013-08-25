@@ -8,7 +8,14 @@ using System.Collections.Generic;
 public class ManagePlayerState : MonoBehaviour 
 {
 	public GameObject spiritPrefab;
+	public GameObject preLabel;
 	public bool offenseMode = true;
+	public Material matOffense;
+	public Material matDefense;
+	public Material matWhiteL;
+	public Material matBlackL;
+	public bool labeledBlack = false;
+	public bool labelChosen = false;
 	
 	private List<GameObject> listOfSpirits;
 	private int health = ControlGame.MAX_HEALTH;
@@ -21,10 +28,12 @@ public class ManagePlayerState : MonoBehaviour
 		if(offenseMode)
 		{
 			ammo = ControlGame.START_AMMO;
+			gameObject.renderer.material = matOffense;
 		}
 		else
 		{
 			ammo = 0;
+			gameObject.renderer.material = matDefense;
 		}
 		
 		for(int i = 0; i < 10; i++)
@@ -49,13 +58,42 @@ public class ManagePlayerState : MonoBehaviour
 		/*
 		if(Input.GetKeyUp(KeyCode.O))
 		{
-			offenseMode = !offenseMode;
+			swapState();
 		}
 		//*/
 		
+		if(labelChosen)
+		{
+			labelChosen = false;
+			if(labeledBlack)
+			{
+				preLabel.renderer.material = matBlackL;
+			}
+			else
+			{
+				preLabel.renderer.material = matWhiteL;
+			}
+		}
 		
 	}
 	
+	public void swapState()	
+	{
+		offenseMode = !offenseMode;
+		
+		// Starting offense mode
+		if(offenseMode)
+		{
+			gameObject.renderer.material = matOffense;
+		}
+		
+		// Starting defense mode
+		else
+		{
+			gameObject.renderer.material = matDefense;
+			ammo = 0;
+		}
+	}
 	
 	// ----- Accessors ----- //
 	
@@ -77,6 +115,22 @@ public class ManagePlayerState : MonoBehaviour
 	public int GetApprovalPoints()
 	{
 		return approvalPoints;
+	}
+	
+	public void GainApproval()
+	{
+		if(approvalPoints < 10)
+		{
+			approvalPoints++;
+		}
+	}
+	
+	public void LoseApproval()
+	{
+		if(approvalPoints > 0)
+		{
+			approvalPoints--;
+		}
 	}
 	
 	public int GetAmmo()

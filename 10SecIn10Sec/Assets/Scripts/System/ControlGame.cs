@@ -46,6 +46,8 @@ public class ControlGame : MonoBehaviour
 		{
 			hudAmmoTextAry[i] = hudAmmoAry[i].GetComponent<GUIText>();
 			allPlayerManagers[i] = allPlayers[i].GetComponent<ManagePlayerState>();
+			allPlayerManagers[i].labeledBlack = i>0 ? true : false ;
+			allPlayerManagers[i].labelChosen = true;
 		}
 		
 		// Setup countdown HUD
@@ -62,10 +64,7 @@ public class ControlGame : MonoBehaviour
 	}
 	
 	// For drawing gizmos
-	void OnDrawGizmos()
-	{
-		
-	}
+	void OnDrawGizmos()	{}
 	
 	private void IncrementTime()
 	{
