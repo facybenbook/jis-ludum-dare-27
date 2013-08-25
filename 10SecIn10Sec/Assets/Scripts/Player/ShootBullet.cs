@@ -44,15 +44,5 @@ public class ShootBullet : MonoBehaviour
 			}
 			
 		}
-		
-		// Cheating to decrease health
-		if(Input.GetKeyUp(KeyCode.I))
-		{
-			mps.HealthDec();
-		}
-		if(Input.GetKeyUp(KeyCode.U))
-		{
-			mps.HealthInc();
-		}
 	}
 }

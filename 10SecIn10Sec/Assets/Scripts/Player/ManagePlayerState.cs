@@ -55,10 +55,22 @@ public class ManagePlayerState : MonoBehaviour
 	void Update () 
 	{
 		// Cheat for switching mode.
-		/*
+		//*
 		if(Input.GetKeyUp(KeyCode.O))
 		{
-			swapState();
+			SwapState();
+		}
+		// Cheating to decrease health
+		if(Input.GetKeyUp(KeyCode.I))
+		{
+			HealthDec();
+			print(health);
+			
+		}
+		if(Input.GetKeyUp(KeyCode.U))
+		{
+			HealthInc();
+			print(health);
 		}
 		//*/
 		
@@ -77,7 +89,7 @@ public class ManagePlayerState : MonoBehaviour
 		
 	}
 	
-	public void swapState()	
+	public void SwapState()	
 	{
 		offenseMode = !offenseMode;
 		
@@ -105,11 +117,19 @@ public class ManagePlayerState : MonoBehaviour
 	public void HealthDec()
 	{
 		health--;
+		if(health < 0)
+		{
+			health = 0;
+		}
 	}
 	
 	public void HealthInc()
 	{
 		health++;
+		if(health > ControlGame.MAX_HEALTH)
+		{
+			health = ControlGame.MAX_HEALTH;
+		}
 	}
 	
 	public int GetApprovalPoints()
@@ -119,17 +139,19 @@ public class ManagePlayerState : MonoBehaviour
 	
 	public void GainApproval()
 	{
-		if(approvalPoints < 10)
+		approvalPoints++;
+		if(approvalPoints > 10)
 		{
-			approvalPoints++;
+			approvalPoints = 10;
 		}
 	}
 	
 	public void LoseApproval()
 	{
-		if(approvalPoints > 0)
+		approvalPoints--;
+		if(approvalPoints < 0)
 		{
-			approvalPoints--;
+			approvalPoints = 0;
 		}
 	}
 	

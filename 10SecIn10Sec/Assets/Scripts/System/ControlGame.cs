@@ -20,6 +20,8 @@ public class ControlGame : MonoBehaviour
 	private GUIText[] hudAmmoTextAry;
 	private ManagePlayerState[] allPlayerManagers;
 	private GUIText hudCountdownText;
+	private float[] hudHealthMaxWidths;
+	private Rect[] hudHealthCurrRect;
 	
 	private static GameObject m_instance;
 	private static double realTime = 0.0;
@@ -42,9 +44,13 @@ public class ControlGame : MonoBehaviour
 		// Init private arrays
 		hudAmmoTextAry = new GUIText[MAX_HUD_ARY];
 		allPlayerManagers = new ManagePlayerState[MAX_HUD_ARY];
+		hudHealthMaxWidths = new float[MAX_HUD_ARY];
+		hudHealthCurrRect = new Rect[MAX_HUD_ARY];
 		for(int i = 0; i< MAX_HUD_ARY; i++)
 		{
 			hudAmmoTextAry[i] = hudAmmoAry[i].GetComponent<GUIText>();
+			hudHealthCurrRect[i] = hudHealthAry[i].GetComponent<GUITexture>().pixelInset;
+			hudHealthMaxWidths[i] = hudHealthAry[i].GetComponent<GUITexture>().pixelInset.width;
 			allPlayerManagers[i] = allPlayers[i].GetComponent<ManagePlayerState>();
 			allPlayerManagers[i].labeledBlack = i>0 ? true : false ;
 			allPlayerManagers[i].labelChosen = true;
@@ -61,6 +67,7 @@ public class ControlGame : MonoBehaviour
 		IncrementTime();
 		UpdateAmmoHUD();
 		UpdateCountdownHUD();
+		UpdateHealthHUD();
 	}
 	
 	// For drawing gizmos
@@ -102,5 +109,19 @@ public class ControlGame : MonoBehaviour
 	private void UpdateCountdownHUD()
 	{
 		hudCountdownText.text = currTime.ToString();
+	}
+	
+	private void UpdateHealthHUD()
+	{
+		for(int i = 0; i < MAX_HUD_ARY; i++)
+		{
+			if(allPlayerManagers[i] != null)
+			{
+				int currHealth = allPlayerManagers[i].GetHealth();
+				float healthRatio = (float) currHealth / (float) MAX_HEALTH;
+				float currBarWidth = healthRatio * hudHealthMaxWidths[i];
+				hudHealthCurrRect[i].x = currBarWidth;
+			}
+		}
 	}
 }

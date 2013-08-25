@@ -18303,7 +18303,7 @@ GUITexture:
   m_GameObject: {fileID: 1666968982}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 33e9758e8cfff054d91f6f25cc825433, type: 3}
-  m_Color: {r: .311216921, g: .313725501, b: .298961937, a: .501960814}
+  m_Color: {r: .444606692, g: .448529422, b: .425443351, a: .501960814}
   m_PixelInset:
     serializedVersion: 2
     x: -115.699997
@@ -20084,7 +20084,7 @@ GUITexture:
   m_GameObject: {fileID: 1833898134}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 33e9758e8cfff054d91f6f25cc825433, type: 3}
-  m_Color: {r: .311216921, g: .313725501, b: .298961937, a: .501960814}
+  m_Color: {r: 0, g: 0, b: 0, a: .501960814}
   m_PixelInset:
     serializedVersion: 2
     x: -115.699997
