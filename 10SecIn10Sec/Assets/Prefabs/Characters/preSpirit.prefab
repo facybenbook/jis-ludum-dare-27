@@ -66,6 +66,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
+  matSpiritNormal: {fileID: 2100000, guid: c2ac8b0a8935b9c42a1715cad7a21bf9, type: 2}
+  matSpiritSeconded: {fileID: 2100000, guid: 1f6d2ca9d79f31e43b031a4d508d6035, type: 2}
+  matSpiritSpecial: {fileID: 2100000, guid: 7676536b61156764bb2410a2b9d13564, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

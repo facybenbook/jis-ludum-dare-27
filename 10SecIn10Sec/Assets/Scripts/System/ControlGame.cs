@@ -12,6 +12,8 @@ public class ControlGame : MonoBehaviour
 	public GameObject[] hudBackAry;
 	public GameObject[] hudHealthAry;
 	public GameObject hudCountdown;
+	public GameObject powerupHealthPrefab;
+	public GameObject powerupRelicPrefab;
 	
 	public static float currTime = 10.0f;
 	public const int MAX_HEALTH = 100;

@@ -8,6 +8,9 @@ public class ManageSpiritState : MonoBehaviour
 	private bool indexSet = false;
 	private bool angleSet = false;
 	[HideInInspector] public Transform playerTransform;
+	public Material matSpiritNormal;
+	public Material matSpiritSeconded;
+	public Material matSpiritSpecial;
 	
 	// Use this for initialization
 	void Start () 
@@ -22,6 +25,20 @@ public class ManageSpiritState : MonoBehaviour
 		transform.position = playerTransform.position + angleDisplacement * 2.0f;
 	}
 	
+	public void GlowNormally()
+	{
+		gameObject.renderer.material = matSpiritNormal;
+	}
+	
+	public void GlowAfterSeconding()
+	{
+		gameObject.renderer.material = matSpiritSeconded;
+	}
+	
+	public void GlowInSpecialMode()
+	{
+		gameObject.renderer.material = matSpiritSpecial;
+	}
 	
 	// ------ Accessors --------- //
 	

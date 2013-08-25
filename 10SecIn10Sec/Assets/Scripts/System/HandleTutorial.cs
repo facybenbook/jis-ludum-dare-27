@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HandleMenu : MonoBehaviour 
+public class HandleTutorial : MonoBehaviour 
 {
 
 	// Use this for initialization
@@ -15,10 +15,9 @@ public class HandleMenu : MonoBehaviour
 	{
 		if(Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.JoystickButton7))
 		{
-			Application.LoadLevel("scn_tutorial");
+			Application.LoadLevel("scn_play");
 		}
 	}
 	
-	// For gizmos
 	void OnDrawGizmos() {}
 }

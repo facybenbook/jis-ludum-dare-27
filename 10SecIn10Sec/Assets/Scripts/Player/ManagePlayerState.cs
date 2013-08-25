@@ -16,7 +16,7 @@ public class ManagePlayerState : MonoBehaviour
 	public Material matBlackL;
 	public bool labeledBlack = false;
 	public bool labelChosen = false;
-	public int bulletsFired = 0;
+	[HideInInspector] public int bulletsFired = 0;
 	
 	private List<GameObject> listOfSpirits;
 	private int health = ControlGame.MAX_HEALTH;
@@ -154,6 +154,19 @@ public class ManagePlayerState : MonoBehaviour
 	public void OnKill()
 	{
 		//print("BLEH!");
+		GameObject persistantCtrlr = GameObject.FindWithTag("PerstCtrlr");
+		PersistantCtrlr pCtrlr = persistantCtrlr.GetComponent<PersistantCtrlr>();
+		
+		if(labeledBlack)
+		{
+			pCtrlr.lWhitePlayerWon = true;
+		}
+		else
+		{
+			pCtrlr.lWhitePlayerWon = false;
+		}
+		
+		Application.LoadLevel("scn_gameOver");
 	}
 	
 	// ----- Accessors ----- //
