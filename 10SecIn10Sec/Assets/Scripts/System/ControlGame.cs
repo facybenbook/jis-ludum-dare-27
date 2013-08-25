@@ -20,6 +20,11 @@ public class ControlGame : MonoBehaviour
 	public const int START_AMMO = 100;
 	public static bool someoneDeclaredSpecialMode = false;
 	
+	private static GameObject m_instance;
+	private static double realTime = 0.0;
+	private const int MAX_HUD_ARY = 2;
+	private const double POW_SPWN_TIME = 8.0;
+	
 	private GUIText[] hudAmmoTextAry;
 	private ManagePlayerState[] allPlayerManagers;
 	private GUIText hudCountdownText;
@@ -28,10 +33,9 @@ public class ControlGame : MonoBehaviour
 	private bool alreadySwapped = false;
 	private Color colTimerNormal;
 	private Color colTimerSpecial;
+	private double powerupSpawnTimer = POW_SPWN_TIME;
 	
-	private static GameObject m_instance;
-	private static double realTime = 0.0;
-	private const int MAX_HUD_ARY = 2;
+	
 	
 	// Use this for initialization
 	void Start () 
@@ -67,6 +71,12 @@ public class ControlGame : MonoBehaviour
 		
 		colTimerNormal = hudCountdownText.color;
 		colTimerSpecial = new Color(71.0f/255.0f, 245.0f/255.0f, 255.0f/255.0f);
+		
+		float swapAtStartDeterminer = Random.Range(-1.0f, 1.0f);
+		if(swapAtStartDeterminer > 0.0f)
+		{
+			SwapPlayerRoles();
+		}
 	}
 	
 	// Update is called once per frame
@@ -119,7 +129,26 @@ public class ControlGame : MonoBehaviour
 			{
 				currTime = 10.0f;
 				alreadySwapped = false;
-			}	
+			}
+			
+			powerupSpawnTimer--;
+			if(powerupSpawnTimer < 0.0)
+			{
+				powerupSpawnTimer = POW_SPWN_TIME;
+				float randPosX = Random.Range(-18.0f, 18.0f);
+				float randPosZ = Random.Range(-18.0f, 18.0f);
+				Vector3 randomPos = new Vector3(randPosX, 0.0f, randPosZ);
+				float powerUpDeterminer = Random.Range(-1.0f, 1.0f);
+				
+				if(powerUpDeterminer > 0.0f)
+				{
+					Instantiate(powerupHealthPrefab, randomPos, powerupHealthPrefab.transform.rotation);
+				}
+				else if(powerUpDeterminer <= 0.0f)
+				{
+					Instantiate(powerupRelicPrefab, randomPos, powerupRelicPrefab.transform.rotation);
+				}
+			}
 		}
 	}
 	

@@ -12905,7 +12905,7 @@ SphereCollider:
     type: 2}
   m_PrefabInternal: {fileID: 415568700}
   m_GameObject: {fileID: 1184347695}
-  m_Material: {fileID: 13400000, guid: 99e86ee0ad11f8d6d00011d98d76c639, type: 2}
+  m_Material: {fileID: 13400000, guid: 5410a64fad11e8d6d00011d98d76c639, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -14271,7 +14271,7 @@ SphereCollider:
     type: 2}
   m_PrefabInternal: {fileID: 857378792}
   m_GameObject: {fileID: 1308643779}
-  m_Material: {fileID: 13400000, guid: 99e86ee0ad11f8d6d00011d98d76c639, type: 2}
+  m_Material: {fileID: 13400000, guid: 5410a64fad11e8d6d00011d98d76c639, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
