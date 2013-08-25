@@ -18,6 +18,7 @@ public class ManagePlayerState : MonoBehaviour
 	public Material matBlackL;
 	public bool labeledBlack = false;
 	public bool labelChosen = false;
+	public bool isAI = false;
 	[HideInInspector] public int bulletsFired = 0;
 	
 	private List<GameObject> listOfSpirits;
@@ -26,6 +27,7 @@ public class ManagePlayerState : MonoBehaviour
 	private int ammo = 0;
 	private bool specialModeSet = false;
 	private bool inSpecialMode = false;
+	private ManageAIPlayer aiMangr;
 	
 	// Use this for initialization
 	void Start () 
@@ -56,6 +58,11 @@ public class ManagePlayerState : MonoBehaviour
 			mss.SetSpiritIndex(i);
 			mss.SetAngleDisp(newAngeVec);
 			mss.playerTransform = transform;
+		}
+		
+		if(isAI)
+		{
+			aiMangr = GetComponent<ManageAIPlayer>();
 		}
 	}
 	
@@ -186,6 +193,11 @@ public class ManagePlayerState : MonoBehaviour
 	{
 		offenseMode = !offenseMode;
 		
+		if(isAI)
+		{
+			aiMangr.SwapAIState();
+		}
+		
 		// Starting offense mode
 		if(offenseMode)
 		{
@@ -202,7 +214,6 @@ public class ManagePlayerState : MonoBehaviour
 	
 	public void OnKill()
 	{
-		//print("BLEH!");
 		GameObject persistantCtrlr = GameObject.FindWithTag("PerstCtrlr");
 		PersistantCtrlr pCtrlr = persistantCtrlr.GetComponent<PersistantCtrlr>();
 		

@@ -209,6 +209,7 @@ MonoBehaviour:
   matBlackL: {fileID: 2100000, guid: fde5a28494bd1664c881c7a3d5cc38c2, type: 2}
   labeledBlack: 0
   labelChosen: 0
+  isAI: 1
   bulletsFired: 0
 --- !u!114 &11400002
 MonoBehaviour:
@@ -257,6 +258,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 100000, guid: 7a0b5d9ba62ecd14799583aebd1db6ec, type: 2}
   shieldPrefab: {fileID: 100000, guid: fd26c6ba1e3c90040966d32a7b2c5e2d, type: 2}
   specialBulletPrefab: {fileID: 100000, guid: 58ac8d2371befb543ad3a162bdfbd264, type: 2}
+  theOpponent: {fileID: 0}
+  relicArrived: 0
+  healthArrived: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -43,7 +43,7 @@ public class ShootBullet : MonoBehaviour
 					newBullet.transform.forward = transform.forward;
 					mps.AmmoDec();
 					mps.bulletsFired++;
-					if(mps.bulletsFired > 25)
+					if(mps.bulletsFired > 50)
 					{
 						mps.bulletsFired = 0;
 						mps.LoseApproval();

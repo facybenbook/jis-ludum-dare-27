@@ -3,6 +3,14 @@ using System.Collections;
 
 public class ManageAIPlayer : MonoBehaviour 
 {
+	public enum eAIStates
+	{
+		ChaseRelic,
+		ChaseHealth,
+		ShootLaser,
+		ShootShield
+	}
+	
 	public float thrustSpeed;
 	public float thrustDrag;
 	public float rotateSpeed;
@@ -10,8 +18,16 @@ public class ManageAIPlayer : MonoBehaviour
 	public GameObject bulletPrefab;
 	public GameObject shieldPrefab;
 	public GameObject specialBulletPrefab;
+	public GameObject theOpponent;
 	
+	public bool relicArrived = false;
+	public bool healthArrived = false;
+	
+	//private ManagePlayerState opponentsManager;
 	private ManagePlayerState mps;
+	private bool inOffenseMode = false;
+	private bool offenseOrDefenseJustChanged = false;
+	private eAIStates currentAIState;
 	
 	// Use this for initialization
 	void Start () 
@@ -20,6 +36,18 @@ public class ManageAIPlayer : MonoBehaviour
 		if(!mps)
 		{
 			print("ManageAIPlayer: Couldn't get player state!");
+		}
+		//opponentsManager = theOpponent.GetComponent<ManagePlayerState>();
+		
+		inOffenseMode = mps.offenseMode;
+		
+		if(inOffenseMode)
+		{
+			currentAIState = eAIStates.ShootLaser;
+		}
+		else
+		{
+			currentAIState = eAIStates.ShootShield;
 		}
 	}
 	
@@ -33,6 +61,67 @@ public class ManageAIPlayer : MonoBehaviour
 		
 		rigidbody.drag = thrustDrag;
 		rigidbody.angularDrag = rotateDrag;
+		
+		
+		// ---------- AI State Changers ----------- //
+		
+		if(healthArrived)
+		{
+			healthArrived = false;
+			
+			// DETERMINE IF TO CHASE HEALTH
+			int currHealth = mps.GetHealth();
+			
+			if(currHealth <= 50)
+			{
+				currentAIState = eAIStates.ChaseHealth;
+			}
+		}
+		
+		if(relicArrived)
+		{
+			relicArrived = false;
+			
+			// DETERMINE IF TO CHASE RELIC
+			float currHealth = mps.GetHealth();
+			
+			if(currHealth > 50)
+			{
+				currentAIState = eAIStates.ChaseRelic;
+			}
+		}
+		
+		
+		if(offenseOrDefenseJustChanged)
+		{
+			offenseOrDefenseJustChanged = false;
+			
+			// DETERMINE IF TO FIRE TO DEFEND
+			if(inOffenseMode)
+			{
+				currentAIState = eAIStates.ShootLaser;
+			}
+			else
+			{
+				currentAIState = eAIStates.ShootShield;
+			}
+		}
+		
+		// ---------- AI State Implementers ------- //
+		
+		//ConstantlyFaceTarget(theOpponent);
+		switch(currentAIState)
+		{
+			case eAIStates.ChaseHealth:
+				ChaseHealth(); break;
+			case eAIStates.ChaseRelic:
+				ChaseRelic(); break;
+			case eAIStates.ShootLaser:
+				ShootLaser(); break;
+			case eAIStates.ShootShield:
+				ShootShield(); break;
+		}
+		
 	}
 	
 	
@@ -49,7 +138,6 @@ public class ManageAIPlayer : MonoBehaviour
 			rigidbody.AddRelativeForce(Vector3.forward * -thrustSpeed * 0.75f * Time.deltaTime);
 		}
 	}
-	
 	
 	public void RotateAI(float normalizedMagnitude)
 	{
@@ -85,7 +173,7 @@ public class ManageAIPlayer : MonoBehaviour
 			newBullet.transform.forward = transform.forward;
 			mps.AmmoDec();
 			mps.bulletsFired++;
-			if(mps.bulletsFired > 25)
+			if(mps.bulletsFired > 50)
 			{
 				mps.bulletsFired = 0;
 				mps.LoseApproval();
@@ -105,7 +193,50 @@ public class ManageAIPlayer : MonoBehaviour
 		}	
 	}
 	
+	public void SwapAIState()
+	{
+		inOffenseMode = !inOffenseMode;
+		
+		offenseOrDefenseJustChanged = true;
+	}
 	
+	// ------- AI Exclusive Stuff -----------//
+	//=======================================//
+	
+	
+	private void ChaseTarget(GameObject theTarget)
+	{
+		// TBI (to be implemented)
+	}
+	
+	private void ConstantlyFaceTarget(GameObject theTarget)
+	{
+		transform.LookAt(theTarget.transform);
+	}
+	
+	
+	// ------------ Update Loop AI Plans --------------//
+	//=================================================//
+	
+	private void ChaseHealth()
+	{
+		print("Chase Health not implemented");
+	}
+	
+	private void ChaseRelic()
+	{
+		print("Chase Relic not impemented");
+	}
+	
+	private void ShootLaser()
+	{
+		print("Shoot Laser not implemented");
+	}
+	
+	private void ShootShield()
+	{
+		print("Shoot Shield not implemented");
+	}
 }
 
 

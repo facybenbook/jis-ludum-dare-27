@@ -4403,7 +4403,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 94f8a5234d3c1c043bf5c7631fa90770, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -.935982347
+      value: .923879564
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 94f8a5234d3c1c043bf5c7631fa90770, type: 2}
       propertyPath: m_LocalRotation.z
@@ -4411,7 +4411,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 94f8a5234d3c1c043bf5c7631fa90770, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .352046967
+      value: -.382683396
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 94f8a5234d3c1c043bf5c7631fa90770, type: 2}
       propertyPath: m_Enabled
@@ -4421,37 +4421,15 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 94f8a5234d3c1c043bf5c7631fa90770, type: 2}
+      propertyPath: theOpponent
+      value: 
+      objectReference: {fileID: 1308643779}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94f8a5234d3c1c043bf5c7631fa90770, type: 2}
   m_RootGameObject: {fileID: 1184347695}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &420015823
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 420015824}
-  m_Layer: 0
-  m_Name: TEMP
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &420015824
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 420015823}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1001 &420959877
 Prefab:
   m_ObjectHideFlags: 0
@@ -5397,7 +5375,7 @@ GameObject:
   - 4: {fileID: 502843441}
   - 114: {fileID: 502843440}
   m_Layer: 0
-  m_Name: persistantController
+  m_Name: persistantControllerTEMP___
   m_TagString: PerstCtrlr
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9216,7 +9194,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 863c0d365cbd78543b2120b2355c6870, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12.1272001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 863c0d365cbd78543b2120b2355c6870, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9224,7 +9202,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 863c0d365cbd78543b2120b2355c6870, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -11.6443176
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 863c0d365cbd78543b2120b2355c6870, type: 2}
       propertyPath: m_LocalRotation.x
@@ -9232,15 +9210,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 863c0d365cbd78543b2120b2355c6870, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: .382683486
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 863c0d365cbd78543b2120b2355c6870, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 863c0d365cbd78543b2120b2355c6870, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: .923879564
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 863c0d365cbd78543b2120b2355c6870, type: 2}
       propertyPath: m_Name
@@ -9991,6 +9969,10 @@ Prefab:
       objectReference: {fileID: 507925667}
     - target: {fileID: 11400000, guid: fd200edd83bcd1c48ac79d6457d115bf, type: 2}
       propertyPath: allPlayers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1184347695}
+    - target: {fileID: 11400000, guid: fd200edd83bcd1c48ac79d6457d115bf, type: 2}
+      propertyPath: aiPlayer
       value: 
       objectReference: {fileID: 1184347695}
     m_RemovedComponents: []
@@ -12818,6 +12800,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 13186e5068590d8428aaa7684b80a695, type: 2}
+      propertyPath: m_Name
+      value: persistantControllerTEMP___
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13186e5068590d8428aaa7684b80a695, type: 2}
   m_RootGameObject: {fileID: 502843439}
@@ -12853,7 +12839,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 94f8a5234d3c1c043bf5c7631fa90770, type: 2}
   m_PrefabInternal: {fileID: 415568700}
   m_GameObject: {fileID: 1184347695}
-  m_LocalRotation: {x: 0, y: -.935982347, z: 0, w: .352046967}
+  m_LocalRotation: {x: 0, y: .923879564, z: 0, w: -.382683396}
   m_LocalPosition: {x: 12.2148476, y: 0, z: 12.9980927}
   m_LocalScale: {x: 1, y: 1, z: 1.75}
   m_Children:
@@ -12882,6 +12868,7 @@ MonoBehaviour:
   matBlackL: {fileID: 2100000, guid: fde5a28494bd1664c881c7a3d5cc38c2, type: 2}
   labeledBlack: 0
   labelChosen: 0
+  isAI: 1
   bulletsFired: 0
 --- !u!114 &1184347698
 MonoBehaviour:
@@ -12989,6 +12976,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 100000, guid: 7a0b5d9ba62ecd14799583aebd1db6ec, type: 2}
   shieldPrefab: {fileID: 100000, guid: fd26c6ba1e3c90040966d32a7b2c5e2d, type: 2}
   specialBulletPrefab: {fileID: 100000, guid: 58ac8d2371befb543ad3a162bdfbd264, type: 2}
+  theOpponent: {fileID: 1308643779}
+  relicArrived: 0
+  healthArrived: 0
 --- !u!82 &1184347705
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14343,8 +14333,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 863c0d365cbd78543b2120b2355c6870, type: 2}
   m_PrefabInternal: {fileID: 857378792}
   m_GameObject: {fileID: 1308643779}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: .382683486, z: 0, w: .923879564}
+  m_LocalPosition: {x: -12.1272001, y: 0, z: -11.6443176}
   m_LocalScale: {x: 1, y: 1, z: 1.75}
   m_Children:
   - {fileID: 43695218}
@@ -14431,6 +14421,7 @@ MonoBehaviour:
   matBlackL: {fileID: 2100000, guid: fde5a28494bd1664c881c7a3d5cc38c2, type: 2}
   labeledBlack: 0
   labelChosen: 0
+  isAI: 0
   bulletsFired: 0
 --- !u!1001 &1310289943
 Prefab:
@@ -16123,6 +16114,7 @@ MonoBehaviour:
   hudCountdown: {fileID: 507925667}
   powerupHealthPrefab: {fileID: 100000, guid: 36fed763ef24c1b4a96ad4e6a5d038bf, type: 2}
   powerupRelicPrefab: {fileID: 100000, guid: aee06975e199fbd47b681cc41fb10d6b, type: 2}
+  aiPlayer: {fileID: 1184347695}
 --- !u!82 &1409264606
 AudioSource:
   m_ObjectHideFlags: 0

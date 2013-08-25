@@ -14,6 +14,7 @@ public class ControlGame : MonoBehaviour
 	public GameObject hudCountdown;
 	public GameObject powerupHealthPrefab;
 	public GameObject powerupRelicPrefab;
+	public GameObject aiPlayer = null;
 	
 	public static float currTime = 10.0f;
 	public const int MAX_HEALTH = 100;
@@ -34,6 +35,7 @@ public class ControlGame : MonoBehaviour
 	private Color colTimerNormal;
 	private Color colTimerSpecial;
 	private double powerupSpawnTimer = POW_SPWN_TIME;
+	private ManageAIPlayer aiMangr = null;
 	
 	
 	
@@ -63,6 +65,11 @@ public class ControlGame : MonoBehaviour
 			allPlayerManagers[i] = allPlayers[i].GetComponent<ManagePlayerState>();
 			allPlayerManagers[i].labeledBlack = i>0 ? true : false ;
 			allPlayerManagers[i].labelChosen = true;
+		}
+		
+		if(aiPlayer != null)
+		{
+			aiMangr = aiPlayer.GetComponent<ManageAIPlayer>();
 		}
 		
 		// Setup countdown HUD
@@ -143,10 +150,18 @@ public class ControlGame : MonoBehaviour
 				if(powerUpDeterminer > 0.0f)
 				{
 					Instantiate(powerupHealthPrefab, randomPos, powerupHealthPrefab.transform.rotation);
+					if(aiMangr)
+					{
+						aiMangr.healthArrived = true;
+					}
 				}
 				else if(powerUpDeterminer <= 0.0f)
 				{
 					Instantiate(powerupRelicPrefab, randomPos, powerupRelicPrefab.transform.rotation);
+					if(aiMangr)
+					{
+						aiMangr.relicArrived = true;
+					}
 				}
 			}
 		}
