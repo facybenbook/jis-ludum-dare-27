@@ -121,7 +121,7 @@ public class ControlGame : MonoBehaviour
 				
 				if(!alreadySwapped)
 				{
-					//SwapPlayerRoles();            // Uncomment this when ready!
+					SwapPlayerRoles();
 					alreadySwapped = true;
 				}
 			}
