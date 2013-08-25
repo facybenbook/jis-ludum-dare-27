@@ -24,10 +24,14 @@ public class ShootBullet : MonoBehaviour
 		{
 			if(mps.offenseMode)
 			{
-				GameObject newBullet = Instantiate(bulletPrefab, 
-									               transform.position + transform.forward * 1.6f, 
-									               transform.rotation) as GameObject;
-				newBullet.transform.forward = transform.forward;
+				if(mps.GetAmmo() > 0)
+				{
+					GameObject newBullet = Instantiate(bulletPrefab, 
+										               transform.position + transform.forward * 1.6f, 
+										               transform.rotation) as GameObject;
+					newBullet.transform.forward = transform.forward;
+					mps.AmmoDec();
+				}
 				
 			}
 			else
@@ -36,8 +40,19 @@ public class ShootBullet : MonoBehaviour
 							                       transform.position, 
 							                       transform.rotation) as GameObject;
 				newShield.GetComponent<KeepShieldInFront>().playerTransform = transform;
+				mps.AmmoInc();
 			}
 			
+		}
+		
+		// Cheating to decrease health
+		if(Input.GetKeyUp(KeyCode.I))
+		{
+			mps.HealthDec();
+		}
+		if(Input.GetKeyUp(KeyCode.U))
+		{
+			mps.HealthInc();
 		}
 	}
 }

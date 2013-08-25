@@ -64,6 +64,16 @@ public class ManagePlayerState : MonoBehaviour
 		return health;
 	}
 	
+	public void HealthDec()
+	{
+		health--;
+	}
+	
+	public void HealthInc()
+	{
+		health++;
+	}
+	
 	public int GetApprovalPoints()
 	{
 		return approvalPoints;

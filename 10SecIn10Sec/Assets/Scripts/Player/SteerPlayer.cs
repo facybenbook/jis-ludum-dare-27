@@ -51,10 +51,4 @@ public class SteerPlayer : MonoBehaviour
 			rigidbody.AddRelativeTorque(Vector3.up * -rotateSpeed * Time.deltaTime);
 		}
 	}
-	
-	// For drawing on the GUI
-	void OnGUI()
-	{
-		//GUI.Label (new Rect (0,0,100,50), "This is the text string for a Label Control");
-	}
 }

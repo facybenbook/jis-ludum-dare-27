@@ -14,7 +14,6 @@ GameObject:
   - 114: {fileID: 11400000}
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: prePlayer
@@ -102,17 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 100000, guid: 7a0b5d9ba62ecd14799583aebd1db6ec, type: 2}
   shieldPrefab: {fileID: 100000, guid: fd26c6ba1e3c90040966d32a7b2c5e2d, type: 2}
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e2be112c6775fb4e95323c7e39d5a18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spiritPrefab: {fileID: 100000, guid: ec574cb010cd78c438a21b4aecd591af, type: 2}
-  offenseMode: 1
+  offenseMode: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
