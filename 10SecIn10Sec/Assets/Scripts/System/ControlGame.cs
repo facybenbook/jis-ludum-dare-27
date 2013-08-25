@@ -80,6 +80,7 @@ public class ControlGame : MonoBehaviour
 		if(someoneDeclaredSpecialMode)
 		{
 			someoneDeclaredSpecialMode = false;
+			realTime = 0.0;
 			currTime = 10.0f;
 			hudCountdownText.text = currTime.ToString();
 			hudCountdownText.color = colTimerSpecial;
@@ -162,9 +163,9 @@ public class ControlGame : MonoBehaviour
 	
 	private void SwapPlayerRoles()
 	{
-		//for(int i = 0; i < MAX_HUD_ARY; i++)
-		//{
-			allPlayerManagers[0].SwapState();
-		//}
+		for(int i = 0; i < MAX_HUD_ARY; i++)
+		{
+			allPlayerManagers[i].SwapState();
+		}
 	}
 }

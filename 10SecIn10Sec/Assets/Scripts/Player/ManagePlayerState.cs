@@ -173,6 +173,11 @@ public class ManagePlayerState : MonoBehaviour
 		GameObject persistantCtrlr = GameObject.FindWithTag("PerstCtrlr");
 		PersistantCtrlr pCtrlr = persistantCtrlr.GetComponent<PersistantCtrlr>();
 		
+		if(pCtrlr)
+		{
+			print("ManagePlayerState: Persistant Controller Does Not Exist");
+		}
+		
 		if(labeledBlack)
 		{
 			pCtrlr.lWhitePlayerWon = true;
