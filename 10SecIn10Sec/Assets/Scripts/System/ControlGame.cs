@@ -18,6 +18,7 @@ public class ControlGame : MonoBehaviour
 	public static float currTime = 10.0f;
 	public const int MAX_HEALTH = 100;
 	public const int START_AMMO = 100;
+	public static bool someoneDeclaredSpecialMode = false;
 	
 	private GUIText[] hudAmmoTextAry;
 	private ManagePlayerState[] allPlayerManagers;
@@ -25,6 +26,8 @@ public class ControlGame : MonoBehaviour
 	private float[] hudHealthMaxWidths;
 	private Rect[] hudHealthCurrRect;
 	private bool alreadySwapped = false;
+	private Color colTimerNormal;
+	private Color colTimerSpecial;
 	
 	private static GameObject m_instance;
 	private static double realTime = 0.0;
@@ -61,6 +64,9 @@ public class ControlGame : MonoBehaviour
 		// Setup countdown HUD
 		hudCountdownText = hudCountdown.GetComponent<GUIText>();
 		hudCountdownText.text = currTime.ToString();
+		
+		colTimerNormal = hudCountdownText.color;
+		colTimerSpecial = new Color(71.0f/255.0f, 245.0f/255.0f, 255.0f/255.0f);
 	}
 	
 	// Update is called once per frame
@@ -70,6 +76,14 @@ public class ControlGame : MonoBehaviour
 		UpdateAmmoHUD();
 		UpdateCountdownHUD();
 		UpdateHealthHUD();
+		
+		if(someoneDeclaredSpecialMode)
+		{
+			someoneDeclaredSpecialMode = false;
+			currTime = 10.0f;
+			hudCountdownText.text = currTime.ToString();
+			hudCountdownText.color = colTimerSpecial;
+		}
 	}
 	
 	// For drawing gizmos
@@ -84,6 +98,16 @@ public class ControlGame : MonoBehaviour
 			currTime--;
 			if(currTime < 1.0f)
 			{
+				// To deactivate special mode
+				if(hudCountdownText.color == colTimerSpecial)
+				{
+					hudCountdownText.color = colTimerNormal;
+					for(int i = 0; i < MAX_HUD_ARY; i++)
+					{
+						allPlayerManagers[i].DeactivateSpecialMode();
+					}
+				}
+				
 				if(!alreadySwapped)
 				{
 					//SwapPlayerRoles();            // Uncomment this when ready!
@@ -131,7 +155,6 @@ public class ControlGame : MonoBehaviour
 				int currHealth = allPlayerManagers[i].GetHealth();
 				float healthRatio = (float) currHealth / (float) MAX_HEALTH;
 				float currBarWidth = healthRatio * hudHealthMaxWidths[i];
-				//hudHealthCurrRect[i].width = currBarWidth;
 				hudHealthAry[i].GetComponent<ControlHealthBar>().SetBarWidth(currBarWidth);
 			}
 		}

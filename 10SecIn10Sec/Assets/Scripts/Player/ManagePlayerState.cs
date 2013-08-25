@@ -12,6 +12,8 @@ public class ManagePlayerState : MonoBehaviour
 	public bool offenseMode = true;
 	public Material matOffense;
 	public Material matDefense;
+	public Material matOffenseSpecial;
+	public Material matDefenseSpecial;
 	public Material matWhiteL;
 	public Material matBlackL;
 	public bool labeledBlack = false;
@@ -22,6 +24,8 @@ public class ManagePlayerState : MonoBehaviour
 	private int health = ControlGame.MAX_HEALTH;
 	private int approvalPoints = 0;
 	private int ammo = 0;
+	private bool specialModeSet = false;
+	private bool inSpecialMode = false;
 	
 	// Use this for initialization
 	void Start () 
@@ -92,6 +96,15 @@ public class ManagePlayerState : MonoBehaviour
 		if(health == 0)
 		{
 			OnKill();
+		}
+		
+		if(approvalPoints == 10)
+		{
+			if(!specialModeSet)
+			{
+				specialModeSet = true;
+				InitiateSpecialMode();
+			}
 		}
 		
 	}
@@ -170,6 +183,43 @@ public class ManagePlayerState : MonoBehaviour
 		}
 		
 		Application.LoadLevel("scn_gameOver");
+	}
+	
+	public void InitiateSpecialMode()
+	{
+		inSpecialMode = true;
+		ammo = 100;
+		if(offenseMode)
+		{
+			gameObject.renderer.material = matOffenseSpecial;
+		}
+		else
+		{
+			gameObject.renderer.material = matDefenseSpecial;
+		}
+		foreach(GameObject s in listOfSpirits)
+		{
+			s.GetComponent<ManageSpiritState>().GlowInSpecialMode();
+		}
+		ControlGame.someoneDeclaredSpecialMode = true;
+	}
+	
+	public void DeactivateSpecialMode()
+	{
+		inSpecialMode = false;
+		approvalPoints = 0;
+		if(offenseMode)
+		{
+			gameObject.renderer.material = matOffense;
+		}
+		else
+		{
+			gameObject.renderer.material = matDefense;
+		}
+		foreach(GameObject s in listOfSpirits)
+		{
+			s.GetComponent<ManageSpiritState>().GlowNormally();
+		}
 	}
 	
 	// ----- Accessors ----- //
@@ -259,5 +309,10 @@ public class ManagePlayerState : MonoBehaviour
 		{
 			ammo = 0;
 		}
+	}
+	
+	public bool isInSpecialMode()
+	{
+		return inSpecialMode;
 	}
 }
