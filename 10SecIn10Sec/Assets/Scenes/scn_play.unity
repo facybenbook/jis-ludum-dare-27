@@ -10558,6 +10558,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 996772023}
   - 131: {fileID: 996772024}
+  - 114: {fileID: 996772025}
   m_Layer: 0
   m_Name: player0health
   m_TagString: Untagged
@@ -10595,6 +10596,17 @@ GUITexture:
   m_RightBorder: 0
   m_TopBorder: 0
   m_BottomBorder: 0
+--- !u!114 &996772025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 996772022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38f16cf233105d498bafea6367c71b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1002521283
 Prefab:
   m_ObjectHideFlags: 0
@@ -20621,6 +20633,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1879198845}
   - 131: {fileID: 1879198844}
+  - 114: {fileID: 1879198846}
   m_Layer: 0
   m_Name: player1health
   m_TagString: Untagged
@@ -20658,6 +20671,17 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 715542580}
+--- !u!114 &1879198846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1879198843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38f16cf233105d498bafea6367c71b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1887387578
 GameObject:
   m_ObjectHideFlags: 0

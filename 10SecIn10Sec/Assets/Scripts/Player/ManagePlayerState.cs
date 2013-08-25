@@ -64,13 +64,11 @@ public class ManagePlayerState : MonoBehaviour
 		if(Input.GetKeyUp(KeyCode.I))
 		{
 			HealthDec();
-			print(health);
 			
 		}
 		if(Input.GetKeyUp(KeyCode.U))
 		{
 			HealthInc();
-			print(health);
 		}
 		//*/
 		

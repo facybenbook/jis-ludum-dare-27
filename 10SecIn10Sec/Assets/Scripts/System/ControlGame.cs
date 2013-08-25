@@ -70,6 +70,12 @@ public class ControlGame : MonoBehaviour
 		UpdateHealthHUD();
 	}
 	
+	// For drawing GUI
+	void OnGUI()
+	{
+		
+	}
+	
 	// For drawing gizmos
 	void OnDrawGizmos()	{}
 	
@@ -129,7 +135,8 @@ public class ControlGame : MonoBehaviour
 				int currHealth = allPlayerManagers[i].GetHealth();
 				float healthRatio = (float) currHealth / (float) MAX_HEALTH;
 				float currBarWidth = healthRatio * hudHealthMaxWidths[i];
-				hudHealthCurrRect[i].x = currBarWidth;
+				//hudHealthCurrRect[i].width = currBarWidth;
+				hudHealthAry[i].GetComponent<ControlHealthBar>().SetBarWidth(currBarWidth);
 			}
 		}
 	}
