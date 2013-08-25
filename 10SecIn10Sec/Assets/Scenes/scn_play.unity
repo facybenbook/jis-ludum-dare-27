@@ -4943,19 +4943,19 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 19854497}
   - {fileID: 1563017481}
-  - {fileID: 75322131}
-  - {fileID: 270175013}
-  - {fileID: 288129610}
-  - {fileID: 1453059753}
-  - {fileID: 1468227507}
-  - {fileID: 1824416550}
-  - {fileID: 1929398006}
+  - {fileID: 19854497}
   - {fileID: 972908849}
-  - {fileID: 480884236}
-  - {fileID: 1160324247}
+  - {fileID: 288129610}
   - {fileID: 1211865369}
+  - {fileID: 1160324247}
+  - {fileID: 1453059753}
+  - {fileID: 480884236}
+  - {fileID: 270175013}
+  - {fileID: 1929398006}
+  - {fileID: 75322131}
+  - {fileID: 1824416550}
+  - {fileID: 1468227507}
   - {fileID: 583585565}
   m_Father: {fileID: 0}
 --- !u!1001 &420959877
@@ -14014,6 +14014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 100000, guid: 7a0b5d9ba62ecd14799583aebd1db6ec, type: 2}
   shieldPrefab: {fileID: 100000, guid: fd26c6ba1e3c90040966d32a7b2c5e2d, type: 2}
+  specialBulletPrefab: {fileID: 100000, guid: 58ac8d2371befb543ad3a162bdfbd264, type: 2}
 --- !u!135 &1184347699
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14021,7 +14022,7 @@ SphereCollider:
     type: 2}
   m_PrefabInternal: {fileID: 415568700}
   m_GameObject: {fileID: 1184347695}
-  m_Material: {fileID: 13400000, guid: 5410a64fad11e8d6d00011d98d76c639, type: 2}
+  m_Material: {fileID: 13400000, guid: 99e86ee0ad11f8d6d00011d98d76c639, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -15402,6 +15403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 100000, guid: 7a0b5d9ba62ecd14799583aebd1db6ec, type: 2}
   shieldPrefab: {fileID: 100000, guid: fd26c6ba1e3c90040966d32a7b2c5e2d, type: 2}
+  specialBulletPrefab: {fileID: 100000, guid: 58ac8d2371befb543ad3a162bdfbd264, type: 2}
 --- !u!135 &1308643781
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15409,7 +15411,7 @@ SphereCollider:
     type: 2}
   m_PrefabInternal: {fileID: 857378792}
   m_GameObject: {fileID: 1308643779}
-  m_Material: {fileID: 13400000, guid: 5410a64fad11e8d6d00011d98d76c639, type: 2}
+  m_Material: {fileID: 13400000, guid: 99e86ee0ad11f8d6d00011d98d76c639, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

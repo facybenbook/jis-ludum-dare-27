@@ -114,10 +114,36 @@ public class ManagePlayerState : MonoBehaviour
 		if(other.gameObject.CompareTag("Bullet"))
 		{
 			Destroy(other.gameObject);
-			health -= 2;
-			if(health < 0)
+			
+			if( !(!offenseMode && inSpecialMode) )
 			{
-				health = 0;
+				health -= 2;
+				if(health < 0)
+				{
+					health = 0;
+				}
+			}
+		}
+		if(other.gameObject.CompareTag("BulletSpecial"))
+		{
+			Destroy(other.gameObject);
+			
+			if( !(!offenseMode && inSpecialMode) )
+			{
+				health -= 2;
+				if(health < 0)
+				{
+					health = 0;
+				}
+			}
+		}
+		
+		if(other.gameObject.CompareTag("Player"))
+		{
+			ManagePlayerState otherPSM = other.gameObject.GetComponent<ManagePlayerState>();
+			if(otherPSM.isInSpecialMode())
+			{
+				health -= 20;
 			}
 		}
 	}
@@ -134,16 +160,23 @@ public class ManagePlayerState : MonoBehaviour
 				{
 					health = 100;
 				}
-				LoseApproval();
+				
+				if(!inSpecialMode)
+				{
+					LoseApproval();
+				}
 			}
 			else if (pt == DefinePowerup.ePowerupType.Relic)
 			{
-				health -= 10;
-				if(health < 0)
+				if(!inSpecialMode)
 				{
-					health = 0;
+					health -= 10;
+					if(health < 0)
+					{
+						health = 0;
+					}
+					GainApproval();
 				}
-				GainApproval();
 			}
 			Destroy(other.gameObject);
 		}
