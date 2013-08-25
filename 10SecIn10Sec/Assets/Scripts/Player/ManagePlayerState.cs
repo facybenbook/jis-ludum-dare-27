@@ -37,11 +37,14 @@ public class ManagePlayerState : MonoBehaviour
 			gameObject.renderer.material = matDefense;
 		}
 		
+		listOfSpirits = new List<GameObject>();
+		
 		for(int i = 0; i < 10; i++)
 		{
 			GameObject newSpirit = Instantiate(spiritPrefab, 
 											   transform.position, 
 											   transform.rotation) as GameObject;
+			listOfSpirits.Add(newSpirit);
 			Quaternion newAngle = Quaternion.AngleAxis(36*i, Vector3.up);
 			Vector3 newAngeVec = newAngle * Vector3.forward;
 			newSpirit.transform.position = transform.position + newAngeVec * 2.0f;
@@ -206,6 +209,16 @@ public class ManagePlayerState : MonoBehaviour
 		{
 			approvalPoints = 10;
 		}
+		
+		int i = 1;
+		foreach(GameObject s in listOfSpirits)
+		{
+			if(i <= approvalPoints)
+			{
+				s.GetComponent<ManageSpiritState>().GlowAfterSeconding();
+			}
+			i++;
+		}
 	}
 	
 	public void LoseApproval()
@@ -215,6 +228,18 @@ public class ManagePlayerState : MonoBehaviour
 		{
 			approvalPoints = 0;
 		}
+		
+		int i = 1;
+		listOfSpirits.Reverse();
+		foreach(GameObject s in listOfSpirits)
+		{
+			if(i <= 10 - approvalPoints)
+			{
+				s.GetComponent<ManageSpiritState>().GlowNormally();
+			}
+			i++;
+		}
+		listOfSpirits.Reverse();
 	}
 	
 	public int GetAmmo()
