@@ -11,6 +11,7 @@ public class ControlGame : MonoBehaviour
 	
 	public static float currTime = 10.0f;
 	public const int MAX_HEALTH = 100;
+	public const int START_AMMO = 100;
 	
 	private static GameObject m_instance;
 	private static double realTime = 0.0;

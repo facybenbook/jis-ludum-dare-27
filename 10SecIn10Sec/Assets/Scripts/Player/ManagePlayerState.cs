@@ -18,6 +18,15 @@ public class ManagePlayerState : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		if(offenseMode)
+		{
+			ammo = ControlGame.START_AMMO;
+		}
+		else
+		{
+			ammo = 0;
+		}
+		
 		for(int i = 0; i < 10; i++)
 		{
 			GameObject newSpirit = Instantiate(spiritPrefab, 
