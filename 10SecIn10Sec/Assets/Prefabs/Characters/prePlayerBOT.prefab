@@ -256,6 +256,7 @@ MonoBehaviour:
   rotateDrag: 3.45000005
   bulletPrefab: {fileID: 100000, guid: 7a0b5d9ba62ecd14799583aebd1db6ec, type: 2}
   shieldPrefab: {fileID: 100000, guid: fd26c6ba1e3c90040966d32a7b2c5e2d, type: 2}
+  specialBulletPrefab: {fileID: 100000, guid: 58ac8d2371befb543ad3a162bdfbd264, type: 2}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

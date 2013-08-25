@@ -9,6 +9,7 @@ public class ManageAIPlayer : MonoBehaviour
 	public float rotateDrag;
 	public GameObject bulletPrefab;
 	public GameObject shieldPrefab;
+	public GameObject specialBulletPrefab;
 	
 	private ManagePlayerState mps;
 	
@@ -68,9 +69,19 @@ public class ManageAIPlayer : MonoBehaviour
 	{
 		if(mps.GetAmmo() > 0)
 		{
-			GameObject newBullet = Instantiate(bulletPrefab, 
-								               transform.position + transform.forward * 1.6f, 
-								               transform.rotation) as GameObject;
+			GameObject newBullet;
+			if(mps.isInSpecialMode())
+			{
+				newBullet = Instantiate(specialBulletPrefab, 
+									    transform.position + transform.forward * 3.2f, 
+					                    transform.rotation) as GameObject;
+			}
+			else
+			{
+				newBullet = Instantiate(bulletPrefab, 
+									    transform.position + transform.forward * 1.6f, 
+					                    transform.rotation) as GameObject;
+			}
 			newBullet.transform.forward = transform.forward;
 			mps.AmmoDec();
 			mps.bulletsFired++;
@@ -84,11 +95,14 @@ public class ManageAIPlayer : MonoBehaviour
 	
 	public void ShootAIShield()
 	{
-		GameObject newShield = Instantiate(shieldPrefab, 
-					                       transform.position, 
-					                       transform.rotation) as GameObject;
-		newShield.GetComponent<KeepShieldInFront>().playerTransform = transform;
-		mps.AmmoInc();
+		if(! (mps.isInSpecialMode()) )
+		{
+			GameObject newShield = Instantiate(shieldPrefab, 
+						                       transform.position, 
+						                       transform.rotation) as GameObject;
+			newShield.GetComponent<KeepShieldInFront>().playerTransform = transform;
+			mps.AmmoInc();
+		}	
 	}
 	
 	

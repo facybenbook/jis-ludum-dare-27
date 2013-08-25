@@ -27,5 +27,9 @@ public class KeepShieldInFront : MonoBehaviour
 		{
 			Destroy(other.gameObject);
 		}
+		if(other.gameObject.CompareTag("BulletSpecial"))
+		{
+			Destroy(other.gameObject);
+		}
 	}
 }
