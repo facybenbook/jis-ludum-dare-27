@@ -31,6 +31,12 @@ public class ShootBullet : MonoBehaviour
 										               transform.rotation) as GameObject;
 					newBullet.transform.forward = transform.forward;
 					mps.AmmoDec();
+					mps.bulletsFired++;
+					if(mps.bulletsFired > 25)
+					{
+						mps.bulletsFired = 0;
+						mps.LoseApproval();
+					}
 				}
 				
 			}

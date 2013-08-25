@@ -70,12 +70,6 @@ public class ControlGame : MonoBehaviour
 		UpdateHealthHUD();
 	}
 	
-	// For drawing GUI
-	void OnGUI()
-	{
-		
-	}
-	
 	// For drawing gizmos
 	void OnDrawGizmos()	{}
 	

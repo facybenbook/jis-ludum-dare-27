@@ -16,6 +16,7 @@ public class ManagePlayerState : MonoBehaviour
 	public Material matBlackL;
 	public bool labeledBlack = false;
 	public bool labelChosen = false;
+	public int bulletsFired = 0;
 	
 	private List<GameObject> listOfSpirits;
 	private int health = ControlGame.MAX_HEALTH;
@@ -85,6 +86,24 @@ public class ManagePlayerState : MonoBehaviour
 			}
 		}
 		
+		if(health == 0)
+		{
+			OnKill();
+		}
+		
+	}
+	
+	void OnCollisionEnter(Collision other)
+	{
+		if(other.gameObject.CompareTag("Bullet"))
+		{
+			Destroy(other.gameObject);
+			health -= 2;
+			if(health < 0)
+			{
+				health = 0;
+			}
+		}
 	}
 	
 	public void SwapState()	
@@ -103,6 +122,11 @@ public class ManagePlayerState : MonoBehaviour
 			gameObject.renderer.material = matDefense;
 			ammo = 0;
 		}
+	}
+	
+	public void OnKill()
+	{
+		//print("BLEH!");
 	}
 	
 	// ----- Accessors ----- //
