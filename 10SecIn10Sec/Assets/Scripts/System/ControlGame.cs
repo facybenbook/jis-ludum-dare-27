@@ -22,11 +22,11 @@ public class ControlGame : MonoBehaviour
 	private GUIText hudCountdownText;
 	private float[] hudHealthMaxWidths;
 	private Rect[] hudHealthCurrRect;
+	private bool alreadySwapped = false;
 	
 	private static GameObject m_instance;
 	private static double realTime = 0.0;
 	private const int MAX_HUD_ARY = 2;
-	
 	
 	// Use this for initialization
 	void Start () 
@@ -80,9 +80,18 @@ public class ControlGame : MonoBehaviour
 		{
 			realTime -= 1.0;
 			currTime--;
+			if(currTime < 1.0f)
+			{
+				if(!alreadySwapped)
+				{
+					//SwapPlayerRoles();            // Uncomment this when ready!
+					alreadySwapped = true;
+				}
+			}
 			if(currTime < 0.0f)
 			{
 				currTime = 10.0f;
+				alreadySwapped = false;
 			}	
 		}
 	}
@@ -123,5 +132,13 @@ public class ControlGame : MonoBehaviour
 				hudHealthCurrRect[i].x = currBarWidth;
 			}
 		}
+	}
+	
+	private void SwapPlayerRoles()
+	{
+		//for(int i = 0; i < MAX_HUD_ARY; i++)
+		//{
+			allPlayerManagers[0].SwapState();
+		//}
 	}
 }
