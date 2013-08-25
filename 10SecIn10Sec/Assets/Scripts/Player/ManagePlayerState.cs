@@ -106,6 +106,33 @@ public class ManagePlayerState : MonoBehaviour
 		}
 	}
 	
+	void OnTriggerEnter(Collider other)
+	{
+		if(other.gameObject.CompareTag("Powerup"))
+		{
+			DefinePowerup.ePowerupType pt = other.gameObject.GetComponent<DefinePowerup>().GetTypeOfPowerup();
+			if(pt == DefinePowerup.ePowerupType.Health)
+			{
+				health += 25;
+				if(health > 100)
+				{
+					health = 100;
+				}
+				LoseApproval();
+			}
+			else if (pt == DefinePowerup.ePowerupType.Relic)
+			{
+				health -= 10;
+				if(health < 0)
+				{
+					health = 0;
+				}
+				GainApproval();
+			}
+			Destroy(other.gameObject);
+		}
+	}
+	
 	public void SwapState()	
 	{
 		offenseMode = !offenseMode;
