@@ -28,6 +28,8 @@ public class ManageAIPlayer : MonoBehaviour
 	private bool inOffenseMode = false;
 	private bool offenseOrDefenseJustChanged = false;
 	private eAIStates currentAIState;
+	private const double FIRE_RATE = 0.2;
+	private double fireTimer = 0.0;
 	
 	// Use this for initialization
 	void Start () 
@@ -109,7 +111,6 @@ public class ManageAIPlayer : MonoBehaviour
 		
 		// ---------- AI State Implementers ------- //
 		
-		//ConstantlyFaceTarget(theOpponent);
 		switch(currentAIState)
 		{
 			case eAIStates.ChaseHealth:
@@ -236,6 +237,15 @@ public class ManageAIPlayer : MonoBehaviour
 	private void ShootShield()
 	{
 		print("Shoot Shield not implemented");
+		
+		ConstantlyFaceTarget(theOpponent);
+		
+		fireTimer += Time.deltaTime;
+		if(fireTimer > 0.2)
+		{
+			fireTimer = 0.0;
+			ShootAIShield();
+		}
 	}
 }
 

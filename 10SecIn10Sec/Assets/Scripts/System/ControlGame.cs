@@ -82,13 +82,12 @@ public class ControlGame : MonoBehaviour
 		
 		// This is causing null reference errors in ManagePlayerState.SwapState()
 		
-		/*
 		float swapAtStartDeterminer = Random.Range(-1.0f, 1.0f);
 		if(swapAtStartDeterminer > 0.0f)
 		{
 			SwapPlayerRoles();
 		}
-		*/
+		
 	}
 	
 	// Update is called once per frame
