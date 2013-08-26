@@ -22,14 +22,17 @@ public class ManageAIPlayer : MonoBehaviour
 	
 	public bool relicArrived = false;
 	public bool healthArrived = false;
+	public bool gotPowerup = false;
 	
 	//private ManagePlayerState opponentsManager;
 	private ManagePlayerState mps;
 	private bool inOffenseMode = false;
 	private bool offenseOrDefenseJustChanged = false;
 	private eAIStates currentAIState;
-	private const double FIRE_RATE = 0.2;
+	private const double FIRE_RATE = 0.35;
 	private double fireTimer = 0.0;
+	private bool targetFound = false;
+	private GameObject currentTarget = null;
 	
 	// Use this for initialization
 	void Start () 
@@ -70,11 +73,12 @@ public class ManageAIPlayer : MonoBehaviour
 		if(healthArrived)
 		{
 			healthArrived = false;
+			currentTarget = null;
 			
 			// DETERMINE IF TO CHASE HEALTH
 			int currHealth = mps.GetHealth();
 			
-			if(currHealth <= 50)
+			if(currHealth < 40)
 			{
 				currentAIState = eAIStates.ChaseHealth;
 			}
@@ -83,11 +87,12 @@ public class ManageAIPlayer : MonoBehaviour
 		if(relicArrived)
 		{
 			relicArrived = false;
+			currentTarget = null;
 			
 			// DETERMINE IF TO CHASE RELIC
 			float currHealth = mps.GetHealth();
 			
-			if(currHealth > 50)
+			if(currHealth > 60)
 			{
 				currentAIState = eAIStates.ChaseRelic;
 			}
@@ -97,6 +102,23 @@ public class ManageAIPlayer : MonoBehaviour
 		if(offenseOrDefenseJustChanged)
 		{
 			offenseOrDefenseJustChanged = false;
+			currentTarget = null;
+			
+			// DETERMINE IF TO FIRE TO DEFEND
+			if(inOffenseMode)
+			{
+				currentAIState = eAIStates.ShootLaser;
+			}
+			else
+			{
+				currentAIState = eAIStates.ShootShield;
+			}
+		}
+		
+		if(gotPowerup)
+		{
+			gotPowerup = false;
+			currentTarget = null;
 			
 			// DETERMINE IF TO FIRE TO DEFEND
 			if(inOffenseMode)
@@ -212,7 +234,10 @@ public class ManageAIPlayer : MonoBehaviour
 	
 	private void ConstantlyFaceTarget(GameObject theTarget)
 	{
-		transform.LookAt(theTarget.transform);
+		if(theTarget != null)
+		{
+			transform.LookAt(theTarget.transform);
+		}
 	}
 	
 	
@@ -221,27 +246,78 @@ public class ManageAIPlayer : MonoBehaviour
 	
 	private void ChaseHealth()
 	{
-		print("Chase Health not implemented");
+		//print("Chase Health not implemented");
+		
+		if(!targetFound)
+		{
+			GameObject[] go = GameObject.FindGameObjectsWithTag("Powerup");
+			
+			foreach(GameObject obj in go)
+			{
+				DefinePowerup pow = obj.GetComponent<DefinePowerup>();
+				if(pow.thePowerupType == DefinePowerup.ePowerupType.Health)
+				{
+					targetFound = true;
+					currentTarget = obj;
+					break;
+				}
+			}
+		}
+		else
+		{
+			ConstantlyFaceTarget(currentTarget);
+			ThrustAI(1.0f);
+		}
 	}
 	
 	private void ChaseRelic()
 	{
-		print("Chase Relic not impemented");
+		//print("Chase Relic not impemented");
+		
+		if(!targetFound)
+		{
+			GameObject[] go = GameObject.FindGameObjectsWithTag("Powerup");
+			
+			foreach(GameObject obj in go)
+			{
+				DefinePowerup pow = obj.GetComponent<DefinePowerup>();
+				if(pow.thePowerupType == DefinePowerup.ePowerupType.Relic)
+				{
+					targetFound = true;
+					currentTarget = obj;
+					break;
+				}
+			}
+		}
+		else
+		{
+			ConstantlyFaceTarget(currentTarget);
+			ThrustAI(1.0f);
+		}
 	}
 	
 	private void ShootLaser()
 	{
-		print("Shoot Laser not implemented");
-	}
-	
-	private void ShootShield()
-	{
-		print("Shoot Shield not implemented");
+		//print("Shoot Laser not implemented");
 		
 		ConstantlyFaceTarget(theOpponent);
 		
 		fireTimer += Time.deltaTime;
-		if(fireTimer > 0.2)
+		if(fireTimer > FIRE_RATE)
+		{
+			fireTimer = 0.0;
+			ShootAIBullet();
+		}
+	}
+	
+	private void ShootShield()
+	{
+		//print("Shoot Shield not implemented");
+		
+		ConstantlyFaceTarget(theOpponent);
+		
+		fireTimer += Time.deltaTime;
+		if(fireTimer > FIRE_RATE)
 		{
 			fireTimer = 0.0;
 			ShootAIShield();

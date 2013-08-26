@@ -62,7 +62,7 @@ public class ManagePlayerState : MonoBehaviour
 		
 		if(isAI)
 		{
-			aiMangr = GetComponent<ManageAIPlayer>();
+			aiMangr = gameObject.GetComponent<ManageAIPlayer>();
 		}
 	}
 	
@@ -172,6 +172,11 @@ public class ManagePlayerState : MonoBehaviour
 				{
 					LoseApproval();
 				}
+				
+				if(isAI)
+				{
+					aiMangr.gotPowerup = true;
+				}
 			}
 			else if (pt == DefinePowerup.ePowerupType.Relic)
 			{
@@ -183,6 +188,11 @@ public class ManagePlayerState : MonoBehaviour
 						health = 0;
 					}
 					GainApproval();
+				}
+				
+				if(isAI)
+				{
+					aiMangr.gotPowerup = true;
 				}
 			}
 			Destroy(other.gameObject);
