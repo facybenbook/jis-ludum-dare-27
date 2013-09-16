@@ -31,7 +31,7 @@ public class HandleGameOver : MonoBehaviour
 		}
 		else
 		{
-			print("HandleGameOver: No Persistent Controller Found!");
+			Debug.LogError("HandleGameOver: No Persistent Controller Found!");
 		}
 	}
 	

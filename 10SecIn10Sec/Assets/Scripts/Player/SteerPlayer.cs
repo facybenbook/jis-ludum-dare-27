@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XboxCtrlrInput;
 
 public class SteerPlayer : MonoBehaviour 
 {
@@ -32,21 +33,21 @@ public class SteerPlayer : MonoBehaviour
 		rigidbody.angularDrag = rotateDrag;
 		
 		// Thrust forward or backward
-		if(Input.GetAxis("Vertical") > 0.2f)
+		if(XCI.GetAxis(XboxAxis.LeftStickY) > 0.2f || Input.GetKey(KeyCode.W))
 		{
 			rigidbody.AddRelativeForce(Vector3.forward * thrustSpeed * Time.deltaTime);
 		}
-		if(Input.GetAxis("Vertical") < -0.2f)
+		if(XCI.GetAxis(XboxAxis.LeftStickY) < -0.2f || Input.GetKey(KeyCode.S))
 		{
 			rigidbody.AddRelativeForce(Vector3.forward * -thrustSpeed * 0.75f * Time.deltaTime);
 		}
 		
 		// Turn clockwise or counterclockwise
-		if(Input.GetAxis("Horizontal") > 0.2f)
+		if(XCI.GetAxis(XboxAxis.RightStickX) > 0.2f || Input.GetKey(KeyCode.RightArrow))
 		{
 			rigidbody.AddRelativeTorque(Vector3.up * rotateSpeed * Time.deltaTime);
 		}
-		if(Input.GetAxis("Horizontal") < -0.2f)
+		if(XCI.GetAxis(XboxAxis.RightStickX) < -0.2f || Input.GetKey(KeyCode.LeftArrow))
 		{
 			rigidbody.AddRelativeTorque(Vector3.up * -rotateSpeed * Time.deltaTime);
 		}

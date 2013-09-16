@@ -4,6 +4,7 @@ using System.Collections;
 public class PersistantCtrlr : MonoBehaviour 
 {
 	[HideInInspector] public bool lWhitePlayerWon = false;
+	private static bool alreadyExists = false;
 	
 	// Constructor
 	void Awake()
@@ -14,7 +15,14 @@ public class PersistantCtrlr : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		
+		if(alreadyExists)
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			alreadyExists = true;
+		}
 	}
 	
 	// Update is called once per frame
