@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PersistantCtrlr : MonoBehaviour 
 {
-	public bool lWhitePlayerWon = false;
+	[HideInInspector] public bool lWhitePlayerWon = false;
 	
 	// Constructor
 	void Awake()
