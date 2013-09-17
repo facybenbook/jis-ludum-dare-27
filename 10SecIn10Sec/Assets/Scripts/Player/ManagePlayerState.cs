@@ -87,6 +87,7 @@ public class ManagePlayerState : MonoBehaviour
 		}
 		//*/
 		
+		// Choose between the player black and player white
 		if(labelChosen)
 		{
 			labelChosen = false;
@@ -159,7 +160,8 @@ public class ManagePlayerState : MonoBehaviour
 	{
 		if(other.gameObject.CompareTag("Powerup"))
 		{
-			DefinePowerup.ePowerupType pt = other.gameObject.GetComponent<DefinePowerup>().GetTypeOfPowerup();
+			DefinePowerup pow = other.gameObject.GetComponent<DefinePowerup>();
+			DefinePowerup.ePowerupType pt = pow.GetTypeOfPowerup();
 			if(pt == DefinePowerup.ePowerupType.Health)
 			{
 				health += 25;
@@ -195,6 +197,7 @@ public class ManagePlayerState : MonoBehaviour
 					aiMangr.gotPowerup = true;
 				}
 			}
+			pow.PlayPowerupSound();
 			Destroy(other.gameObject);
 		}
 	}
@@ -227,9 +230,9 @@ public class ManagePlayerState : MonoBehaviour
 		GameObject persistantCtrlr = GameObject.FindWithTag("PerstCtrlr");
 		PersistantCtrlr pCtrlr = persistantCtrlr.GetComponent<PersistantCtrlr>();
 		
-		if(pCtrlr)
+		if(!pCtrlr)
 		{
-			print("ManagePlayerState: Persistant Controller Does Not Exist");
+			Debug.LogWarning("ManagePlayerState: Persistant Controller Does Not Exist");
 		}
 		
 		if(labeledBlack)
@@ -255,6 +258,7 @@ public class ManagePlayerState : MonoBehaviour
 		else
 		{
 			gameObject.renderer.material = matDefenseSpecial;
+			ControlGame.specialWasDefense = true;
 		}
 		foreach(GameObject s in listOfSpirits)
 		{

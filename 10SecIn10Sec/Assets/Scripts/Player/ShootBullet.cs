@@ -46,7 +46,7 @@ public class ShootBullet : MonoBehaviour
 					if(mps.bulletsFired > 50)
 					{
 						mps.bulletsFired = 0;
-						mps.LoseApproval();
+						//mps.LoseApproval();
 					}
 				}
 				

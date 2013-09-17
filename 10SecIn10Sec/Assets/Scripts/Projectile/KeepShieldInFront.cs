@@ -4,11 +4,21 @@ using System.Collections;
 public class KeepShieldInFront : MonoBehaviour 
 {
 	[HideInInspector] public Transform playerTransform;
+	public AudioClip shieldSound;
 	
 	// Use this for initialization
 	void Start ()
 	{
-		
+		gameObject.AddComponent<AudioSource>();
+		audio.clip = shieldSound;
+		if(shieldSound != null)
+		{
+			audio.Play();
+		}
+		else
+		{
+			Debug.LogWarning(gameObject.name + ": shieldSound not assigned!");
+		}
 	}
 	
 	// Update is called once per frame

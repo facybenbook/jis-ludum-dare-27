@@ -15,11 +15,16 @@ public class ControlGame : MonoBehaviour
 	public GameObject powerupHealthPrefab;
 	public GameObject powerupRelicPrefab;
 	public GameObject aiPlayer = null;
+	public GameObject soundPlayerInvinci;
+	public GameObject soundPlayerSpecials;
+	
+	public AudioClip sndSwap;
 	
 	public static float currTime = 10.0f;
 	public const int MAX_HEALTH = 100;
 	public const int START_AMMO = 100;
 	public static bool someoneDeclaredSpecialMode = false;
+	public static bool specialWasDefense = false;
 	
 	private static GameObject m_instance;
 	private static double realTime = 0.0;
@@ -36,6 +41,8 @@ public class ControlGame : MonoBehaviour
 	private Color colTimerSpecial;
 	private double powerupSpawnTimer = POW_SPWN_TIME;
 	private ManageAIPlayer aiMangr = null;
+	private PlayInvncibleSound sndPlyrInvi;
+	private PlaySpecialModeSounds sndPlyrSpcl;
 	
 	
 	
@@ -72,6 +79,9 @@ public class ControlGame : MonoBehaviour
 			aiMangr = aiPlayer.GetComponent<ManageAIPlayer>();
 		}
 		
+		sndPlyrInvi = soundPlayerInvinci.GetComponent<PlayInvncibleSound>();
+		sndPlyrSpcl = soundPlayerSpecials.GetComponent<PlaySpecialModeSounds>();
+		
 		// Setup countdown HUD
 		hudCountdownText = hudCountdown.GetComponent<GUIText>();
 		hudCountdownText.text = currTime.ToString();
@@ -107,6 +117,11 @@ public class ControlGame : MonoBehaviour
 			currTime = 10.0f;
 			hudCountdownText.text = currTime.ToString();
 			hudCountdownText.color = colTimerSpecial;
+			if(specialWasDefense)
+			{
+				sndPlyrInvi.StartSound();
+			}
+			sndPlyrSpcl.PlayStartSound();
 		}
 	}
 	
@@ -130,12 +145,17 @@ public class ControlGame : MonoBehaviour
 					{
 						allPlayerManagers[i].DeactivateSpecialMode();
 					}
+					sndPlyrInvi.StopSound();
+					sndPlyrSpcl.PlayEndSound();
+					specialWasDefense = false;
 				}
 				
 				if(!alreadySwapped)
 				{
 					SwapPlayerRoles();
 					alreadySwapped = true;
+					audio.clip = sndSwap;
+					audio.Play();
 				}
 			}
 			if(currTime < 0.0f)

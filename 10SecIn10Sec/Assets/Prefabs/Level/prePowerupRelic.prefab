@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePowerupType: 1
+  soundDropper: {fileID: 100000, guid: f67ecf63ba95595448702a16edc4df01, type: 2}
+  powerupSound: {fileID: 8300000, guid: a165dff5210eb634caf6085c4cd6d976, type: 3}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

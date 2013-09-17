@@ -9,9 +9,6 @@ public class DropSound : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		gameObject.AddComponent<AudioSource>();
-		audio.minDistance = 1000.0f;
-		audio.maxDistance = audio.minDistance;
 		audio.volume = Mathf.Clamp(volumeRatio , 0.0f, 1.0f);
 		audio.clip = soundToPlay;
 		if(audio.clip != null)

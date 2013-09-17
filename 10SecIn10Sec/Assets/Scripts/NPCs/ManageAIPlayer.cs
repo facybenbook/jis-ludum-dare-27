@@ -246,7 +246,6 @@ public class ManageAIPlayer : MonoBehaviour
 	
 	private void ChaseHealth()
 	{
-		//print("Chase Health not implemented");
 		
 		if(!targetFound)
 		{
@@ -272,7 +271,6 @@ public class ManageAIPlayer : MonoBehaviour
 	
 	private void ChaseRelic()
 	{
-		//print("Chase Relic not impemented");
 		
 		if(!targetFound)
 		{
@@ -298,7 +296,6 @@ public class ManageAIPlayer : MonoBehaviour
 	
 	private void ShootLaser()
 	{
-		//print("Shoot Laser not implemented");
 		
 		ConstantlyFaceTarget(theOpponent);
 		
@@ -312,7 +309,6 @@ public class ManageAIPlayer : MonoBehaviour
 	
 	private void ShootShield()
 	{
-		//print("Shoot Shield not implemented");
 		
 		ConstantlyFaceTarget(theOpponent);
 		
